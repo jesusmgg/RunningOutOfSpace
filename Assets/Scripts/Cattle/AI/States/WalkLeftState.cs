@@ -1,21 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cattle.Interfaces;
 
 namespace Cattle.States
 {
-    public class BeginState : Interfaces.IStateBase
+    public class WalkLeftState : IStateBase
     {
         private StateManager manager;
 
-        public BeginState(StateManager manager)
+        public WalkLeftState(StateManager manager)
         {
             this.manager = manager;
         }
 
         public void StateUpdate()
         {
-            
+
         }
     }
 }

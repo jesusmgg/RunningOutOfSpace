@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: 9f43fbc183d4150438f3906d31bf1b9e
+guid: c2853b18d1c09a240973901a7509a4e4
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TestTile_0
+    21300000: TestCatWalking_0
+    21300002: TestCatWalking_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -32,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -96,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TestTile_0
+      name: TestCatWalking_0
       rect:
         serializedVersion: 2
         x: 0
@@ -110,7 +111,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf0961a668f238d4591e497d8223f4a4
+      spriteID: dfc2fbeb5a1e4fb45b10374ce40fe8ba
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestCatWalking_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c73b4deec27316478fc58de4a481fbe
       vertices: []
       indices: 
       edges: []
@@ -118,7 +139,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c087b00a97de9ca48a874c781cffd445
+    spriteID: 56a734bd2fa59694f99c469225de8dd3
     vertices: []
     indices: 
     edges: []

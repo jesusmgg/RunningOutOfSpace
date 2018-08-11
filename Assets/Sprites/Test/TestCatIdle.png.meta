@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: 9f43fbc183d4150438f3906d31bf1b9e
+guid: 81ac9e25c49cfaa4eaf5f22221b15559
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TestTile_0
+    21300000: TestCatIdle_0
+    21300002: TestCatIdle_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -32,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -96,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TestTile_0
+      name: TestCatIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -110,7 +111,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf0961a668f238d4591e497d8223f4a4
+      spriteID: 0d364ca4734e5f94594216c1a2fbf768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestCatIdle_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f160055ea00fb944ba1ee3db9715aba
       vertices: []
       indices: 
       edges: []
@@ -118,7 +139,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c087b00a97de9ca48a874c781cffd445
+    spriteID: 1525ffe9ad1754c4ab58a1bcd71ebf65
     vertices: []
     indices: 
     edges: []

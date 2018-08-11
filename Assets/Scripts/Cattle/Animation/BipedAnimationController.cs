@@ -19,10 +19,11 @@ namespace Cattle.Animation
 
         void Update()
         {
-            bool flipSprite = spriteRenderer.flipX ? input.Direction.x > 0.01f : input.Direction.x < -0.01f;
+            bool flipSprite = transform.localScale.x < 0 ? input.Direction.x > 0.01f : input.Direction.x < -0.01f;
             if (flipSprite)
             {
-                spriteRenderer.flipX = !spriteRenderer.flipX;
+                transform.localScale =
+                    new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
             
             animator.SetBool("grounded", physicsObject.Grounded);

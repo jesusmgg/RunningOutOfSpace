@@ -10,6 +10,8 @@ namespace Cattle
         #region SerializableField
         [SerializeField] private GameObject borderLeft;
         [SerializeField] private GameObject borderRight;
+        [SerializeField] private GameObject obstacleRight;
+        [SerializeField] private GameObject obstacleLeft;
         [SerializeField] private float distance;
 
         #endregion
@@ -33,6 +35,8 @@ namespace Cattle
         {
             Debug.DrawRay(borderLeft.transform.position, Vector2.down, Color.cyan);
             Debug.DrawRay(borderRight.transform.position, Vector2.down, Color.cyan);
+            Debug.DrawRay(obstacleLeft.transform.position, Vector2.left, Color.red);
+            Debug.DrawRay(obstacleRight.transform.position, Vector2.right, Color.red);
         }
 
         private void Update()

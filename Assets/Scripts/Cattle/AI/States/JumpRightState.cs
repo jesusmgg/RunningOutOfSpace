@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cattle.Interfaces;
 
-namespace Cattle.States
+namespace Cattle
 {
-    public class ShootState : IStateBase
+    public class JumpRightState : IStateBase
     {
         private StateManager manager;
 
-        public ShootState(StateManager manager)
+        public JumpRightState(StateManager manager)
         {
             this.manager = manager;
         }
 
         public void StateUpdate()
         {
-            //manager.SwitchState(new BeginState(manager));
+
         }
     }
 }
-

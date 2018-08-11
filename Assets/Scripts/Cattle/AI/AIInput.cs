@@ -15,26 +15,37 @@ namespace Cattle.Input
         private void Update()
         {
             Debug.Log(stateManager.activeState.GetType());
-
-            if (stateManager.activeState.GetType() == typeof(WalkRightState))
+            if(stateManager.activeState.GetType() == typeof(ShootState))
             {
                 Direction = new Vector2
                 {
-                    x = 1,
+                    x = 0,
                     y = 0
                 };
+            }
+            else
+            {
+                if (stateManager.activeState.GetType() == typeof(WalkRightState))
+                {
+                    Direction = new Vector2
+                    {
+                        x = 1,
+                        y = 0
+                    };
+                }
+
+                if (stateManager.activeState.GetType() == typeof(WalkLeftState))
+                {
+                    Direction = new Vector2
+                    {
+                        x = -1,
+                        y = 0
+                    };
+                }
             }
 
-            if(stateManager.activeState.GetType() == typeof(WalkLeftState))
-            {
-                Direction = new Vector2
-                {
-                    x = -1,
-                    y = 0
-                };
-            }
-            
-            if(stateManager.activeState.GetType() == typeof(BeginState))
+
+            if (stateManager.activeState.GetType() == typeof(BeginState))
             {
                 Direction = new Vector2
                 {

@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 9f43fbc183d4150438f3906d31bf1b9e
+guid: a3579f638e6073b409d0d1591a3deea0
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TestTile_0
+    21300000: TestCatLanding_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -32,7 +32,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -41,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,7 +96,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TestTile_0
+      name: TestCatLanding_0
       rect:
         serializedVersion: 2
         x: 0
@@ -110,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf0961a668f238d4591e497d8223f4a4
+      spriteID: 82b5be864316ac6499c020827a71c1e7
       vertices: []
       indices: 
       edges: []
@@ -118,7 +118,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c087b00a97de9ca48a874c781cffd445
+    spriteID: 5ea1dae1478b1774186a176d749c1194
     vertices: []
     indices: 
     edges: []

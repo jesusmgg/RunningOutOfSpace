@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cattle.Interfaces;
 
-namespace Cattle
+namespace Cattle.States
 {
     public class JumpRightState : IStateBase
     {

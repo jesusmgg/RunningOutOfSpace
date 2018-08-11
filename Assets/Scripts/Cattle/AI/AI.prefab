@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4766521457864486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BorderRaycastRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114770332576293112}
   - component: {fileID: 114927833172291342}
   - component: {fileID: 114478685801616480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4587619326110542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ObstacleRaycastRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4379434589333664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ObstacleRaycastLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4271073081207122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BorderRaycastLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

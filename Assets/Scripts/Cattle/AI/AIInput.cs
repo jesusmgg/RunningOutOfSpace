@@ -15,7 +15,7 @@ namespace Cattle.Input
         private void Update()
         {
             Debug.Log(stateManager.activeState.GetType());
-            if(stateManager.activeState.GetType() == typeof(ShootState))
+            if (stateManager.activeState.GetType() == typeof(ShootState))
             {
                 Direction = new Vector2
                 {
@@ -25,7 +25,7 @@ namespace Cattle.Input
             }
             else
             {
-                if (stateManager.activeState.GetType() == typeof(WalkRightState))
+                if (stateManager.activeState.GetType() == typeof(WalkRightState) || stateManager.activeState.GetType() == typeof(JumpRightState))
                 {
                     Direction = new Vector2
                     {
@@ -62,7 +62,23 @@ namespace Cattle.Input
 
         public override bool GetButtonDown(string button)
         {
-            return false;
+            if (button.Equals("Jump"))
+            {
+                if (stateManager.activeState.GetType() == typeof(JumpRightState))
+                {
+                    Debug.Log("Jump");
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("OutOfState");
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override bool GetButtonUp(string button)

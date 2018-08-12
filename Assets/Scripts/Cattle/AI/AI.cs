@@ -50,7 +50,7 @@ namespace Cattle
 
         private IEnumerator OcasionalShoot()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(Random.Range(3f, 5f));
             stateManager.SwitchState(new ShootState(stateManager));
         }
 

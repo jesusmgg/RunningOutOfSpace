@@ -9,7 +9,7 @@ namespace Cattle.Game
 
         public int AIPlayers;
 
-        void Start()
+        void Awake()
         {
             // Instantiate players
             Instantiate(PlayerPrefab, null);

@@ -1,6 +1,6 @@
 ﻿namespace Cattle.Tiles
 {
-    public class BreakableTileGameObject
+    public class BreakableTileGameObject : BaseComponent
     {
         
     }

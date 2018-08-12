@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4157701610564006}
   - component: {fileID: 212408145044594956}
+  - component: {fileID: 114459796919680142}
   - component: {fileID: 50378439217847432}
   - component: {fileID: 61754918900409650}
   - component: {fileID: 114263712579738414}
@@ -565,6 +566,23 @@ MonoBehaviour:
   shootSpeed: 0
   canShoot: 0
   fakeBomb: {fileID: 1190837372024562}
+--- !u!114 &114459796919680142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337404333986454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f122c9e8f8f42b2ad4ff25a64de6c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHuman: 0
+  spawnHeight: 40
+  respawnTime: 3
+  isAlive: 0
+  kills: 0
+  deaths: 0
 --- !u!114 &114564843214864392
 MonoBehaviour:
   m_ObjectHideFlags: 1

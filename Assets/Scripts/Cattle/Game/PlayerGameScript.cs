@@ -1,15 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Cattle.Tiles;
+using UnityEngine;
 
 namespace Cattle.Game
 {
     public class PlayerGameScript : BaseGameScript
     {
         public bool isHuman;
-        
+
+        public float spawnHeight = 22.0f;
         public float respawnTime = 3.0f;
         public bool isAlive;
 
-        int kills;
+        public int kills;
+        public int deaths;
+        
         float respawnTimer;
 
         void Start()
@@ -18,18 +24,19 @@ namespace Cattle.Game
             isAlive = false;
 
             kills = 0;
+            deaths = 0;
         }
 
         void Update()
         {
-            if (respawnTimer > 0.0f)
+            Debug.Log(respawnTimer);
+            if (!isAlive)
             {
-                respawnTimer -= Time.deltaTime;
-            }
-
-            if (respawnTimer <= 0.0f)
-            {
-                if (!isAlive)
+                if (respawnTimer > 0.0f)
+                {
+                    respawnTimer -= Time.deltaTime;
+                }
+                else if (respawnTimer <= 0.0f)
                 {
                     Spawn();
                 }
@@ -38,9 +45,18 @@ namespace Cattle.Game
 
         void Spawn()
         {
-            Debug.Log("Spawn");
+            List<BreakableTileGameObject> tileList = FindObjectsOfType<BreakableTileGameObject>().ToList();
             
-            isAlive = true;
+            if (tileList.Count > 0)
+            {
+                BreakableTileGameObject tile = tileList[Random.Range(0, tileList.Count)];
+                if (tile != null)
+                {
+                    Debug.Log("Spawn");
+                    transform.position = new Vector3(tile.transform.position.x, spawnHeight, 0.0f);
+                    isAlive = true;
+                }
+            }
         }
     }
 }

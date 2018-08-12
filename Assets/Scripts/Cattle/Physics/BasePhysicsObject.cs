@@ -7,6 +7,8 @@ namespace Cattle.Physics
     {
         public float minGroundNormalY = .65f;
         public float gravityModifier = 1f;
+
+        public bool usePhysics = true;
         
         protected Vector2 groundNormal;
         protected Vector2 velocity;
@@ -27,7 +29,7 @@ namespace Cattle.Physics
             rigidBody2D = GetComponent<Rigidbody2D>();
         }
 
-        void Start()
+        protected virtual void Start()
         {
             contactFilter.useTriggers = false;
             contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
@@ -47,24 +49,27 @@ namespace Cattle.Physics
 
         void FixedUpdate()
         {
-            velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-            velocity.x = TargetVelocity.x;
+            if (usePhysics)
+            {
+                velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+                velocity.x = TargetVelocity.x;
 
-            Grounded = false;
+                Grounded = false;
 
-            Vector2 deltaPosition = velocity * Time.deltaTime;
+                Vector2 deltaPosition = velocity * Time.deltaTime;
 
-            //Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+                //Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-            //Vector2 move = moveAlongGround * deltaPosition.x;
+                //Vector2 move = moveAlongGround * deltaPosition.x;
 
-            Vector2 move = new Vector2(deltaPosition.x, 0.0f);
+                Vector2 move = new Vector2(deltaPosition.x, 0.0f);
 
-            Movement(move, false);
+                Movement(move, false);
 
-            move = Vector2.up * deltaPosition.y;
+                move = Vector2.up * deltaPosition.y;
 
-            Movement(move, true);
+                Movement(move, true);
+            }
         }
 
         void Movement(Vector2 move, bool yMovement)

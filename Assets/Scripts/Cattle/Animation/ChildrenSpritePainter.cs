@@ -13,7 +13,7 @@ namespace Cattle.Animation
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        void Update()
+        void LateUpdate()
         {
             foreach (SpriteRenderer childSpriteRenderer in GetComponentsInChildren<SpriteRenderer>())
             {

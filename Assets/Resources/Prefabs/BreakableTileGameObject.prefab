@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4838546920293172}
+  - component: {fileID: 114747297011937866}
   m_Layer: 0
   m_Name: BreakableTileGameObject
   m_TagString: Untagged
@@ -39,3 +40,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114747297011937866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581649958938910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9db6676e414018817a4045e2b13b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

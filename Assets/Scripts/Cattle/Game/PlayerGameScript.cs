@@ -29,7 +29,6 @@ namespace Cattle.Game
 
         void Update()
         {
-            Debug.Log(respawnTimer);
             if (!isAlive)
             {
                 if (respawnTimer > 0.0f)
@@ -52,7 +51,6 @@ namespace Cattle.Game
                 BreakableTileGameObject tile = tileList[Random.Range(0, tileList.Count)];
                 if (tile != null)
                 {
-                    Debug.Log("Spawn");
                     transform.position = new Vector3(tile.transform.position.x, spawnHeight, 0.0f);
                     isAlive = true;
                 }

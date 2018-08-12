@@ -10,6 +10,10 @@ namespace Cattle.Physics
         public float maxSpeed = 7;
         public float jumpTakeOffSpeed = 7;
         
+        public bool useRandomSpeed = false;
+        public float minRandomSpeed = 5.0f;
+        public float maxRandomSpeed = 7.0f;
+        
         BaseInput input;
         PlayerGameScript gameScript;
 
@@ -20,11 +24,21 @@ namespace Cattle.Physics
             gameScript = GetComponent<PlayerGameScript>();
         }
 
+        protected override void Start()
+        {
+            base.Start();
+
+            if (useRandomSpeed)
+            {
+                maxSpeed = Random.Range(minRandomSpeed, maxRandomSpeed);
+            }
+        }
+
         protected override void Update()
         {
             if (gameScript != null)
             {
-                rigidBody2D.simulated = gameScript.isAlive;
+                usePhysics = gameScript.isAlive;
             }
             
             base.Update();

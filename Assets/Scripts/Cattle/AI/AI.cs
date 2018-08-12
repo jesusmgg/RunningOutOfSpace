@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Cattle.States;
 
 namespace Cattle
@@ -12,8 +10,11 @@ namespace Cattle
         [SerializeField] private GameObject borderRight;
         [SerializeField] private GameObject obstacleRight;
         [SerializeField] private GameObject obstacleLeft;
+        [SerializeField] private GameObject jumpRight;
+        [SerializeField] private GameObject jumpLeft;
         [SerializeField] private float distanceBorder;
         [SerializeField] private float distanceObstacle;
+        [SerializeField] private float distanceJump;
 
         #endregion
 
@@ -21,8 +22,6 @@ namespace Cattle
         private BaseCollisionController collisionController;
         private StateManager stateManager;
         private GameObject player;
-        private bool movingRight = false;
-        private float lastShootTime;
         #endregion
 
         private void Awake()
@@ -38,6 +37,8 @@ namespace Cattle
             Debug.DrawRay(borderRight.transform.position, Vector2.down * distanceBorder, Color.cyan);
             Debug.DrawRay(obstacleLeft.transform.position, Vector2.left * distanceObstacle, Color.red);
             Debug.DrawRay(obstacleRight.transform.position, Vector2.right * distanceObstacle, Color.red);
+            Debug.DrawRay(jumpRight.transform.position, Vector2.right * distanceJump, Color.yellow);
+            Debug.DrawRay(jumpLeft.transform.position, Vector2.left * distanceJump, Color.yellow);
         }
 
         private void Update()
@@ -50,7 +51,10 @@ namespace Cattle
             var obstacleLeftRay = Physics2D.Raycast(obstacleLeft.transform.position, Vector2.left, distanceObstacle);
             var obstacleRightRay = Physics2D.Raycast(obstacleRight.transform.position, Vector2.right, distanceObstacle);
 
-            
+            var jumpRightRay = Physics2D.Raycast(borderRight.transform.position, Vector2.right, distanceJump);
+            var jumpLeftRay = Physics2D.Raycast(borderLeft.transform.position, Vector2.left, distanceJump);
+
+
 
             if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5)
             {
@@ -58,14 +62,13 @@ namespace Cattle
             }
             else
             {
-                if (obstacleRightRay.collider)
+                if (player.transform.position.x > transform.position.x)
                 {
-                    Debug.Log("Intento saltar");
-                    stateManager.SwitchState(new JumpRightState(stateManager));
-                }
-                else
-                {
-                    if (player.transform.position.x > transform.position.x)
+                    if (obstacleRightRay.collider && jumpRightRay.collider)
+                    {
+                        stateManager.SwitchState(new JumpRightState(stateManager));
+                    }
+                    else
                     {
                         if (borderRightRay.collider)
                         {
@@ -76,8 +79,22 @@ namespace Cattle
                         }
                         else
                         {
-                            stateManager.SwitchState(new BeginState(stateManager));
+                            if(jumpRightRay.collider)
+                            {
+                                stateManager.SwitchState(new JumpRightState(stateManager));
+                            }
+                            else
+                            {
+                                stateManager.SwitchState(new BeginState(stateManager));
+                            }
                         }
+                    }
+                }
+                else
+                {
+                    if(obstacleLeftRay.collider && jumpLeftRay.collider)
+                    {
+                        stateManager.SwitchState(new JumpLeftState(stateManager));
                     }
                     else
                     {
@@ -90,7 +107,14 @@ namespace Cattle
                         }
                         else
                         {
-                            stateManager.SwitchState(new BeginState(stateManager));
+                            if(jumpLeftRay.collider)
+                            {
+                                stateManager.SwitchState(new JumpLeftState(stateManager));
+                            }
+                            else
+                            {
+                                stateManager.SwitchState(new BeginState(stateManager));
+                            }
                         }
                     }
                 }

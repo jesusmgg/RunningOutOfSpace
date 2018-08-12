@@ -45,6 +45,13 @@ namespace Cattle
         {
             Debug.Log(stateManager.activeState);
             StartCoroutine(Loop());
+            StartCoroutine(OcasionalShoot());
+        }
+
+        private IEnumerator OcasionalShoot()
+        {
+            yield return new WaitForSeconds(1f);
+            stateManager.SwitchState(new ShootState(stateManager));
         }
 
         private void OnDrawGizmos()
@@ -90,25 +97,12 @@ namespace Cattle
 
                 var BlockUpRay = Physics2D.Raycast(BlockUP.transform.position, Vector2.up, distanceBlock);
 
+
                 if (Mathf.Abs(player.transform.position.x - transform.position.x) < 4 /*&& Mathf.Abs(player.transform.position.y - transform.position.y) < 1*/ &&  (stateManager.activeState.GetType() != typeof(JumpRightState) || stateManager.activeState.GetType() != typeof(JumpLeftState)))
                 {
-                    if(Mathf.Abs(player.transform.position.y - transform.position.y) < 1)
+                    if (player.transform.position.y - transform.position.y < 1)
                     {
                         stateManager.SwitchState(new ShootState(stateManager));
-                    }
-                    else
-                    {
-                        /*var rnd = new System.Random();
-                        if(rnd.Next(0, 100) < 50)
-                        {
-                            stateManager.SwitchState(new WalkRightState(stateManager));
-                        }
-                        else
-                        {
-                            stateManager.SwitchState(new WalkLeftState(stateManager));
-                        }*/
-                        stateManager.SwitchState(new WalkRightState(stateManager));
-                        //yield return new WaitForSeconds(.5f);
                     }
                 }
                 else

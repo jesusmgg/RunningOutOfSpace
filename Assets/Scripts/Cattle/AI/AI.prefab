@@ -150,6 +150,8 @@ GameObject:
   - component: {fileID: 114927833172291342}
   - component: {fileID: 114478685801616480}
   - component: {fileID: 114232858468340364}
+  - component: {fileID: 114186555831437230}
+  - component: {fileID: 114764973928544420}
   m_Layer: 8
   m_Name: AI
   m_TagString: Player
@@ -525,8 +527,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.7
   gravityModifier: 3
+  usePhysics: 1
   maxSpeed: 10
   jumpTakeOffSpeed: 15
+  useRandomSpeed: 0
+  minRandomSpeed: 5
+  maxRandomSpeed: 7
+--- !u!114 &114186555831437230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662920807201724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f122c9e8f8f42b2ad4ff25a64de6c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHuman: 0
+  spawnHeight: 22
+  respawnTime: 3
+  isAlive: 0
+  kills: 0
+  deaths: 0
 --- !u!114 &114232858468340364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -593,6 +616,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bae4fb5566947279d3d740dca848b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114764973928544420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662920807201724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bac6490ad584056bbb7ecd5726f4bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propagateColor: 1
 --- !u!114 &114770332576293112
 MonoBehaviour:
   m_ObjectHideFlags: 1

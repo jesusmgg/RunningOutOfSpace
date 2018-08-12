@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Cattle.Stats;
+using Cattle.Weapons;
 
 namespace Cattle.Physics
 {
@@ -12,22 +12,26 @@ namespace Cattle.Physics
 
         bool fired = false;
 
-        ProjectileStats stats;
+        BaseProjectile projectile;
+        SpriteRenderer spriteRenderer;
 
         void Awake()
         {
-            stats = GetComponent<ProjectileStats>();
+            projectile = GetComponent<BaseProjectile>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         protected override void ComputeVelocity()
         {
             Vector2 move = Vector2.zero;
 
-            move.x = speed * stats.initialSpeedMultiplier * Mathf.Cos(angle * Mathf.Deg2Rad);
-
+            move.x = speed * projectile.initialSpeedMultiplier * Mathf.Cos(angle * Mathf.Deg2Rad);
+            
+            if (spriteRenderer.flipX) {move.x *= -1.0f;}
+            
             if (!fired)
             {
-                velocity.y = speed * stats.initialSpeedMultiplier * Mathf.Sin(angle * Mathf.Deg2Rad);
+                velocity.y = speed * projectile.initialSpeedMultiplier * Mathf.Sin(angle * Mathf.Deg2Rad);
                 fired = true;
             }
 

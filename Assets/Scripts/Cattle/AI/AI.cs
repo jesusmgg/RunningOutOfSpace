@@ -38,7 +38,6 @@ namespace Cattle
         {
             collisionController = GetComponent<BaseCollisionController>();
             stateManager = GetComponent<StateManager>();
-            player = GameObject.FindWithTag("Player");
         }
 
         private void Start()
@@ -46,6 +45,20 @@ namespace Cattle
             Debug.Log(stateManager.activeState);
             StartCoroutine(Loop());
             StartCoroutine(OcasionalShoot());
+        }
+
+        private IEnumerator ChangeTarget()
+        {
+            var players = GameObject.FindGameObjectsWithTag("Player");
+            player = players[Random.Range(0, players.Length)];
+            while (true)
+            {
+                /*if(player.GetComponent<Cattle.>())
+                {
+                    players = GameObject.FindGameObjectsWithTag("Player");
+                    player = players[Random.Range(0, players.Length)];
+                }*/
+            }
         }
 
         private IEnumerator OcasionalShoot()

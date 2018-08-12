@@ -34,7 +34,7 @@ namespace Cattle.Physics
             contactFilter.useLayerMask = true;
         }
 
-        void Update()
+        protected virtual void Update()
         {
             TargetVelocity = Vector2.zero;
             ComputeVelocity();

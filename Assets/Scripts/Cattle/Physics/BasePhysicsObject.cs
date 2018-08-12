@@ -13,8 +13,8 @@ namespace Cattle.Physics
         protected ContactFilter2D contactFilter;
         protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
 
-        protected const float minMoveDistance = 0.001f;
-        protected const float shellRadius = 0.01f;
+        protected const float MinMoveDistance = 0.001f;
+        protected const float ShellRadius = 0.01f;
         
         protected Rigidbody2D rigidBody2D;
         
@@ -34,7 +34,7 @@ namespace Cattle.Physics
             contactFilter.useLayerMask = true;
         }
 
-        void Update()
+        protected virtual void Update()
         {
             TargetVelocity = Vector2.zero;
             ComputeVelocity();
@@ -54,9 +54,11 @@ namespace Cattle.Physics
 
             Vector2 deltaPosition = velocity * Time.deltaTime;
 
-            Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+            //Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-            Vector2 move = moveAlongGround * deltaPosition.x;
+            //Vector2 move = moveAlongGround * deltaPosition.x;
+
+            Vector2 move = new Vector2(deltaPosition.x, 0.0f);
 
             Movement(move, false);
 
@@ -69,9 +71,9 @@ namespace Cattle.Physics
         {
             float distance = move.magnitude;
 
-            if (distance > minMoveDistance)
+            if (distance > MinMoveDistance)
             {
-                int count = rigidBody2D.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
+                int count = rigidBody2D.Cast(move, contactFilter, hitBuffer, distance + ShellRadius);
                 for (int i = 0; i < count; i++)
                 {
                     Vector2 currentNormal = hitBuffer[i].normal;
@@ -91,12 +93,13 @@ namespace Cattle.Physics
                         velocity = velocity - projection * currentNormal;
                     }
 
-                    float modifiedDistance = hitBuffer[i].distance - shellRadius;
+                    float modifiedDistance = hitBuffer[i].distance - ShellRadius;
                     distance = modifiedDistance < distance ? modifiedDistance : distance;
                 }
             }
 
-            rigidBody2D.position = rigidBody2D.position + move.normalized * distance;
+            //rigidBody2D.position = rigidBody2D.position + move.normalized * distance;
+            transform.Translate(move.normalized * distance);
         }
     }
 }

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114922046263033182}
   - component: {fileID: 50340759659349192}
   - component: {fileID: 58252998347156990}
+  - component: {fileID: 95046178749545488}
   m_Layer: 9
   m_Name: Projectile
   m_TagString: Untagged
@@ -79,6 +80,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!95 &95046178749545488
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049862194789658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28c19e2763e9d1442b8f99ff29984652, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114662634438846834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,9 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2163ba91bf204431b2dd9e08e772258c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
-  gravityModifier: 1
-  speed: 10
+  minGroundNormalY: 0
+  gravityModifier: 3
+  speed: 20
   angle: 27
 --- !u!212 &212885909730851242
 SpriteRenderer:

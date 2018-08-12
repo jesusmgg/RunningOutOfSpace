@@ -38,19 +38,45 @@ namespace Cattle
         {
             collisionController = GetComponent<BaseCollisionController>();
             stateManager = GetComponent<StateManager>();
-            player = GameObject.FindWithTag("Player");
         }
 
         private void Start()
         {
             Debug.Log(stateManager.activeState);
+            StartCoroutine(ChangeTarget());
             StartCoroutine(Loop());
             StartCoroutine(OcasionalShoot());
         }
 
+        private IEnumerator ChangeTarget()
+        {
+            var players = GameObject.FindGameObjectsWithTag("Player");
+            player = players[Random.Range(0, players.Length)];
+            while (true)
+            {
+                while(!player)
+                {
+                    players = GameObject.FindGameObjectsWithTag("Player");
+                    player = players[Random.Range(0, players.Length)];
+                    yield return null;
+                }
+                if(!player.GetComponent<Game.PlayerGameScript>().isAlive)
+                {
+                    players = GameObject.FindGameObjectsWithTag("Player");
+                    player = players[Random.Range(0, players.Length)];
+                }
+
+
+                yield return new WaitForSeconds(10f);
+
+                players = GameObject.FindGameObjectsWithTag("Player");
+                player = players[Random.Range(0, players.Length)];
+            }
+        }
+
         private IEnumerator OcasionalShoot()
         {
-            yield return new WaitForSeconds(Random.Range(3f, 5f));
+            yield return new WaitForSeconds(Random.Range(5f, 8f));
             stateManager.SwitchState(new ShootState(stateManager));
         }
 
@@ -98,7 +124,7 @@ namespace Cattle
                 var BlockUpRay = Physics2D.Raycast(BlockUP.transform.position, Vector2.up, distanceBlock);
 
 
-                if (Mathf.Abs(player.transform.position.x - transform.position.x) < 4 /*&& Mathf.Abs(player.transform.position.y - transform.position.y) < 1*/ &&  (stateManager.activeState.GetType() != typeof(JumpRightState) || stateManager.activeState.GetType() != typeof(JumpLeftState)))
+                if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 /*&& Mathf.Abs(player.transform.position.y - transform.position.y) < 1*/ &&  (stateManager.activeState.GetType() != typeof(JumpRightState) || stateManager.activeState.GetType() != typeof(JumpLeftState)))
                 {
                     if (player.transform.position.y - transform.position.y < 1)
                     {

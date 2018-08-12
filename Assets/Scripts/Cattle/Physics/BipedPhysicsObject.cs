@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cattle.Game;
+using UnityEngine;
 using Cattle.Input;
 
 namespace Cattle.Physics
@@ -10,10 +11,23 @@ namespace Cattle.Physics
         public float jumpTakeOffSpeed = 7;
         
         BaseInput input;
+        PlayerGameScript gameScript;
 
         void Awake()
         {
             input = GetComponent<BaseInput>();
+
+            gameScript = GetComponent<PlayerGameScript>();
+        }
+
+        protected override void Update()
+        {
+            if (gameScript != null)
+            {
+                rigidBody2D.simulated = gameScript.isAlive;
+            }
+            
+            base.Update();
         }
 
         protected override void ComputeVelocity()

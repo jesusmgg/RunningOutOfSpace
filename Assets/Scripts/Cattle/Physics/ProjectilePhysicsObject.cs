@@ -10,6 +10,9 @@ namespace Cattle.Physics
         public float speed = 10.0f;
         public float angle = 27.0f;
 
+        public bool rotate;
+        public float rotationSpeed;
+
         bool fired = false;
 
         BaseProjectile projectile;
@@ -19,6 +22,16 @@ namespace Cattle.Physics
         {
             projectile = GetComponent<BaseProjectile>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (rotate)
+            {
+                transform.Rotate(new Vector3(0,0,1) * Time.deltaTime * rotationSpeed);
+            }
         }
 
         protected override void ComputeVelocity()

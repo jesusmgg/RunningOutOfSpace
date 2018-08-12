@@ -43,6 +43,7 @@ namespace Cattle
 
         private void Start()
         {
+            Debug.Log(stateManager.activeState);
             StartCoroutine(Loop());
         }
 
@@ -103,7 +104,7 @@ namespace Cattle
                             {
                                 stateManager.SwitchState(new JumpLeftState(stateManager));
                             }
-                            yield return new WaitForSeconds(.4f);
+                            yield return new WaitForSeconds(.6f);
                         }
                         if(platformRightRay.collider && !obstacleRightRay.collider && !platformLefttRay.collider && player.transform.position.x > transform.position.x && !BlockUpRay.collider)
                         {
@@ -111,7 +112,7 @@ namespace Cattle
                             {
                                 stateManager.SwitchState(new JumpRightState(stateManager));
                             }
-                            yield return new WaitForSeconds(.4f);
+                            yield return new WaitForSeconds(.6f);
                         }
                     }
 
@@ -150,7 +151,7 @@ namespace Cattle
                     }
                     else
                     {
-                        if (jumpLeftRay.collider && obstacleLeftRay)
+                        if (/*jumpLeftRay.collider &&*/ obstacleLeftRay)
                         {
                             stateManager.SwitchState(new JumpLeftState(stateManager));
                         }
@@ -167,13 +168,11 @@ namespace Cattle
                             {
                                 if (jumpLeftRay.collider)
                                 {
-                                    do
+                                    if (stateManager.activeState.GetType() != typeof(JumpLeftState))
                                     {
-                                        Debug.Log(collisions.Count);
                                         stateManager.SwitchState(new JumpLeftState(stateManager));
-                                        yield return null;
                                     }
-                                    while (collisions.Count != 0);
+                                    yield return new WaitForSeconds(.4f);
                                 }
                                 else
                                 {

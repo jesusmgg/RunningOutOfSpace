@@ -7,11 +7,11 @@ namespace Cattle
     public class StateManager : MonoBehaviour
     {
         public IStateBase activeState;
-        private static StateManager instance;
+        //private static StateManager instance;
 
         private void Start()
         {
-            activeState = new BeginState(this);
+            activeState = new BeginState(GetComponent<StateManager>());
         }
 
         private void Update()

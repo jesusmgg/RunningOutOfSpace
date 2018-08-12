@@ -35,7 +35,7 @@ namespace Cattle.Weapons
             {
                 if (input.GetButtonUp("Fire1") || shootSpeed >= 1.0f)
                 {
-                    if (shootSpeed > float.Epsilon)
+                    if (shootSpeed > float.Epsilon || useAutoShootSpeed)
                     {
                         Shoot();
                     }

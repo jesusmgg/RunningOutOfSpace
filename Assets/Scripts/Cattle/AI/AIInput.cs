@@ -61,6 +61,7 @@ namespace Cattle.Input
 
         public override bool GetButtonDown(string button)
         {
+            
             if (button.Equals("Jump"))
             {
                 if (stateManager.activeState.GetType() == typeof(JumpRightState) || stateManager.activeState.GetType() == typeof(JumpLeftState))
@@ -80,6 +81,19 @@ namespace Cattle.Input
 
         public override bool GetButtonUp(string button)
         {
+            if (button.Equals("Fire1"))
+            {
+                if (stateManager.activeState.GetType() == typeof(ShootState))
+                {
+                    Debug.Log("Shoot");
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
             return false;
         }
     }

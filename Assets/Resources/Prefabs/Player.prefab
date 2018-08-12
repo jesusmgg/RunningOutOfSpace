@@ -556,10 +556,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb97616953a406eb4cdd4be3fee5314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSpeedIncrement: 10
+  projectilePrefab: {fileID: 114186964896559884, guid: d4fe37521baf87d46b220a9170eb2c3c,
+    type: 2}
+  shootSpeedIncrement: 2
+  reloadPeriod: 1
   useAutoShootSpeed: 0
   shootSpeed: 0
-  shoot: 0
+  canShoot: 0
+  fakeBomb: {fileID: 1190837372024562}
 --- !u!114 &114564843214864392
 MonoBehaviour:
   m_ObjectHideFlags: 1

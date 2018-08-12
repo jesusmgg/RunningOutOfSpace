@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cattle.Physics;
+using UnityEngine;
 
 namespace Cattle.Weapons
 {
@@ -8,12 +9,14 @@ namespace Cattle.Weapons
         public GameObject fakeBomb;
 
         SpriteRenderer fakeBombSpriteRenderer;
+        BipedPhysicsObject physicsObject;
 
         protected override void Awake()
         {
             base.Awake();
 
             fakeBombSpriteRenderer = fakeBomb.GetComponent<SpriteRenderer>();
+            physicsObject = GetComponentInParent<BipedPhysicsObject>();
         }
 
         protected override void Update()
@@ -32,6 +35,7 @@ namespace Cattle.Weapons
             
             projectile.transform.parent = null;
             projectile.GetComponent<BaseProjectile>().initialSpeedMultiplier = shootSpeed;
+            projectile.GetComponent<BaseProjectile>().initialVelocity = physicsObject.Velocity;
         }
     }
 }

@@ -29,9 +29,12 @@ namespace Cattle.Physics
             
             if (spriteRenderer.flipX) {move.x *= -1.0f;}
             
+            move.x += projectile.initialVelocity.x;
+            
             if (!fired)
             {
                 velocity.y = speed * projectile.initialSpeedMultiplier * Mathf.Sin(angle * Mathf.Deg2Rad);
+                velocity.y += projectile.initialVelocity.y;
                 fired = true;
             }
 

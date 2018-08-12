@@ -33,7 +33,7 @@ namespace Cattle.Weapons
         {
             if (canShoot)
             {
-                if (input.GetButtonUp("Fire1"))
+                if (input.GetButtonUp("Fire1") || shootSpeed >= 1.0f)
                 {
                     if (shootSpeed > float.Epsilon)
                     {
@@ -62,9 +62,11 @@ namespace Cattle.Weapons
                 shootSpeed = Random.Range(0.6f, 1.0f);
             }
 
-            Mathf.Clamp01(shootSpeed);
+            shootSpeed = Mathf.Clamp(shootSpeed, 0.5f, 1.0f);
             
             InstantiateProjectile();
+
+            shootSpeed = 0.0f;
 
             StartCoroutine(Reload());
         }

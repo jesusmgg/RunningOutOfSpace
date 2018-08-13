@@ -30,23 +30,26 @@ namespace Cattle.Game
 
         void Update()
         {
-            if (!isAlive)
+            if (FindObjectOfType<GameController>().gameRunning)
             {
-                if (respawnTimer > 0.0f)
+                if (!isAlive)
                 {
-                    respawnTimer -= Time.deltaTime;
+                    if (respawnTimer > 0.0f)
+                    {
+                        respawnTimer -= Time.deltaTime;
+                    }
+                    else if (respawnTimer <= 0.0f)
+                    {
+                        Spawn();
+                    }
                 }
-                else if (respawnTimer <= 0.0f)
+                else
                 {
-                    Spawn();
-                }
-            }
-            else
-            {
-                if (transform.position.y <= deathHeight || transform.position.y > spawnHeight + 10.0f)
-                {
-                    Die();
-                }
+                    if (transform.position.y <= deathHeight || transform.position.y > spawnHeight + 10.0f)
+                    {
+                        Die();
+                    }
+                } 
             }
         }
 
@@ -55,10 +58,20 @@ namespace Cattle.Game
             deaths++;
             respawnTimer = respawnTime;
             isAlive = false;
+
+            foreach (var player in FindObjectsOfType<PlayerGameScript>())
+            {
+                if (player.isHuman)
+                {
+                    kills++;
+                }
+            }
         }
 
         void Spawn()
         {
+            kills = 0;
+            
             List<BreakableTileGameObject> tileList = FindObjectsOfType<BreakableTileGameObject>().ToList();
             
             if (tileList.Count > 0)

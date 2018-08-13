@@ -52,23 +52,16 @@ namespace Cattle
         {
             var players = GameObject.FindGameObjectsWithTag("Player");
             player = players[Random.Range(0, players.Length)];
-            while (true)
+
+            while(true)
             {
-                while(!player)
+                while(!player || !player.GetComponent<Game.PlayerGameScript>().isAlive)
                 {
                     players = GameObject.FindGameObjectsWithTag("Player");
                     player = players[Random.Range(0, players.Length)];
                     yield return null;
                 }
-                if(!player.GetComponent<Game.PlayerGameScript>().isAlive)
-                {
-                    players = GameObject.FindGameObjectsWithTag("Player");
-                    player = players[Random.Range(0, players.Length)];
-                }
-
-
-                yield return new WaitForSeconds(10f);
-
+                yield return new WaitForSeconds(5f);
                 players = GameObject.FindGameObjectsWithTag("Player");
                 player = players[Random.Range(0, players.Length)];
             }
@@ -105,6 +98,7 @@ namespace Cattle
 
         private IEnumerator Loop()
         {
+            yield return new WaitForEndOfFrame();
             while (true)
             {
                 var playerPosition = player.transform.position - transform.position;

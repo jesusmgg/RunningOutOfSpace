@@ -85,7 +85,6 @@ namespace Cattle.Input
             {
                 if (stateManager.activeState.GetType() == typeof(ShootState))
                 {
-                    Debug.Log("Shoot");
                     return true;
                 }
                 else

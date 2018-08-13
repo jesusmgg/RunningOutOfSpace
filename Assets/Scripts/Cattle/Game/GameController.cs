@@ -1,22 +1,41 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cattle.Game
 {
     public class GameController : BaseComponent
     {
-        public GameObject PlayerPrefab;
-        public GameObject AIPlayerPrefab;
+        public GameObject playerPrefab;
+        public GameObject aiPlayerPrefab;
 
-        public int AIPlayers;
+        public int aiPlayers;
+
+        [Header("UI")]
+        public Text spawnStateText;
+
+        PlayerGameScript player;
+        List<PlayerGameScript> enemies;
 
         void Awake()
         {
+            enemies = new List<PlayerGameScript>();
+            
             // Instantiate players
-            Instantiate(PlayerPrefab, null);
+            player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponentInChildren<PlayerGameScript>();
 
-            for (int i = 0; i < AIPlayers; i++)
+            for (int i = 0; i < aiPlayers; i++)
             {
-                Instantiate(AIPlayerPrefab, null);
+                enemies.Add(Instantiate(aiPlayerPrefab, new Vector3(1000.0f, 0, 0), Quaternion.identity).GetComponent<PlayerGameScript>());
+            }
+        }
+
+        void Update()
+        {
+            if (player.deaths > 0)
+            {
+                spawnStateText.text = "You died!";
+                spawnStateText.GetComponent<Animator>().SetTrigger("GrowAndBounce");
             }
         }
     }

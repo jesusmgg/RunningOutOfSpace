@@ -546,6 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHuman: 0
   spawnHeight: 22
+  deathHeight: -20
   respawnTime: 3
   isAlive: 0
   kills: 0

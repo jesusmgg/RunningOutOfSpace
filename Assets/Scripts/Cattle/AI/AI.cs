@@ -42,7 +42,6 @@ namespace Cattle
 
         private void Start()
         {
-            Debug.Log(stateManager.activeState);
             StartCoroutine(ChangeTarget());
             StartCoroutine(Loop());
             StartCoroutine(OcasionalShoot());
@@ -105,6 +104,7 @@ namespace Cattle
 
         private IEnumerator Loop()
         {
+            yield return new WaitForEndOfFrame();
             while (true)
             {
                 var playerPosition = player.transform.position - transform.position;
@@ -172,7 +172,6 @@ namespace Cattle
                             {
                                 if (jumpRightRay.collider)
                                 {
-                                    Debug.Log(collisions.Count);
                                     if (stateManager.activeState.GetType() != typeof(JumpRightState))
                                     {
                                         stateManager.SwitchState(new JumpRightState(stateManager));

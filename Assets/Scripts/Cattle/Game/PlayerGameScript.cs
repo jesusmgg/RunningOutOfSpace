@@ -10,6 +10,7 @@ namespace Cattle.Game
         public bool isHuman;
 
         public float spawnHeight = 22.0f;
+        public float deathHeight = -13.0f;
         public float respawnTime = 3.0f;
         public bool isAlive;
 
@@ -40,6 +41,20 @@ namespace Cattle.Game
                     Spawn();
                 }
             }
+            else
+            {
+                if (transform.position.y <= deathHeight || transform.position.y > spawnHeight + 10.0f)
+                {
+                    Die();
+                }
+            }
+        }
+
+        void Die()
+        {
+            deaths++;
+            respawnTimer = respawnTime;
+            isAlive = false;
         }
 
         void Spawn()

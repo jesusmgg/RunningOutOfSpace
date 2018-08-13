@@ -12,13 +12,6 @@ namespace Cattle.States
         public ShootState(StateManager manager)
         {
             this.manager = manager;
-            this.manager.StartCoroutine(ExitTime());
-        }
-
-        private IEnumerator ExitTime()
-        {
-            yield return new WaitForSeconds(5f);
-            manager.SwitchState(new JumpRightState(manager));
         }
 
         public void StateUpdate()
